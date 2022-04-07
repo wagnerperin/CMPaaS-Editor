@@ -34,5 +34,4 @@ diagram.toolManager.relinkingTool.linkValidation = validateLinks;
 
 
 diagram.model = model;
-
 window.diagram = diagram; //give global access to diagram.

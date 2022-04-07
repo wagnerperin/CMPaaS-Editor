@@ -9,7 +9,7 @@ const nodeDataArray =
         key: 2, 
         text: "Relation 1",
         category: 'relation',
-        loc: "42 -4"
+        loc: "42 -7"
     }, {
         key: 3,
         text: 'Concept B',

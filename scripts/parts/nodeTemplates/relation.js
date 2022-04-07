@@ -3,7 +3,7 @@ const $ = go.GraphObject.make;
 const relation =
     $(go.Node, "Auto",
         new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
-        $(go.Shape, "Rectangle", {
+        $(go.Shape, "RoundedRectangle", {
             portId: "", 
             fromLinkable: true, 
             fromLinkableSelfNode: false, 

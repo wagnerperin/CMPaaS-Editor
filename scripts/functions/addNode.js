@@ -8,7 +8,6 @@ const addNode = (e, obj) => {
 
     const loc = fromNode.location.copy();
     loc.x += 120;
-    loc.y += (fromNode.category === "concept" || fromNode.category === "map") ? 4 : -4;
 
     const newNode = {
         text: (fromNode.category === "concept" || fromNode.category === "map") ? 'New Relation' : 'New Concept',

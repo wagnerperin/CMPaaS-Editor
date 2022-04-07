@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <script src="lib/go.js"></script>
+        <style type="text/css">
+            #myDiagramDiv {
+              border: solid 1px black;
+              width: 1024px;
+              height: 600px;
+              margin-right: 12px;
+              float: left;
+              background-color: whitesmoke;
+            }
+        
+            #controls {
+              border: solid 1px gray;
+              width: 250px;
+              background: #ffffff;
+              padding: 5px;
+              float: left;
+            }
+          </style>
+    </head>
+
+    <body>
+        <div style="display: inline-block">
+            <div id="myDiagramDiv"></div>
+
+            <div id="controls">
+                <div style="border: solid 1px gray; float: left;  padding: 2px;">
+                  <p style="text-align: center;">Known Concepts</p>
+                  <hr/>
+                  <div id="selectMetaModelConcept">
+                  </div>
+                  
+                </div>
+              </div>
+        </div>
+        <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+        <script type="module" src="scripts/editor.js"></script>
+    </body>
+</html>

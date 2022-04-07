@@ -20,6 +20,18 @@
               padding: 5px;
               float: left;
             }
+            .button {
+              display: block;
+              width: 7em;
+              background-color: rgba(237, 197, 102, 0.867);
+              border-radius: 0.3em;
+              padding: 0.2em;
+              margin: 0.2em;
+              text-align: center;
+              cursor: pointer;
+              text-decoration: none;
+              color: black;
+            }
           </style>
     </head>
 
@@ -29,15 +41,29 @@
 
             <div id="controls">
                 <div style="border: solid 1px gray; float: left;  padding: 2px;">
-                  <p style="text-align: center;">Known Concepts</p>
+                  <p style="text-align: center;">Known Shared Concepts</p>
                   <hr/>
                   <div id="selectMetaModelConcept">
                   </div>
                   
                 </div>
+                <div style="border: solid 1px gray; float: left;  padding: 2px;">
+                  <p style="text-align: center;">Map Operations</p>
+                  <hr/>
+                  <div id="operations">
+                    <a class="button" href="#" id="saveFileButton" onclick="saveMetaModel()">Save MetaModel</a>
+                    
+                  </div>
+                  
+                </div>
               </div>
         </div>
-        <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
         <script type="module" src="scripts/editor.js"></script>
+        <script src="scripts/operations.js"></script>
+        <script language="javascript">
+          document.addEventListener('DOMContentLoaded', (event) => {
+            loadMetaModels();
+          }); 
+        </script>
     </body>
 </html>

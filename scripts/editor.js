@@ -2,10 +2,12 @@ const $ = go.GraphObject.make;
 import {
     model, 
     conceptNodeTemplate, 
-    relationNodeTemplate, 
+    relationNodeTemplate,
+    instanceNodeTemplate, 
     submapGroupTemplate,
     conceptNodeSelectionAdornmentTemplate,
-    relationNodeSelectionAdornmentTemplate
+    relationNodeSelectionAdornmentTemplate,
+    instanceNodeSelectionAdornmentTemplate
 } from "./parts/main.js";
 import {validateLinks} from './functions/main.js';
 
@@ -23,8 +25,10 @@ const diagram =
 conceptNodeTemplate.selectionAdornmentTemplate = conceptNodeSelectionAdornmentTemplate;
 relationNodeTemplate.selectionAdornmentTemplate = relationNodeSelectionAdornmentTemplate;
 submapGroupTemplate.selectionAdornmentTemplate = conceptNodeSelectionAdornmentTemplate;
+instanceNodeTemplate.selectionAdornmentTemplate = instanceNodeSelectionAdornmentTemplate;
 
 diagram.nodeTemplateMap.add('concept',conceptNodeTemplate);
+diagram.nodeTemplateMap.add('instance',instanceNodeTemplate);
 diagram.nodeTemplateMap.add('relation',relationNodeTemplate);
 
 diagram.groupTemplateMap.add('map', submapGroupTemplate);

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
         <script src="lib/go.js"></script>
+        <script src="scripts/TextEditorSelectBox.js"></script>
         <style type="text/css">
             #myDiagramDiv {
               border: solid 1px black;
@@ -47,12 +47,20 @@
                   </div>
                   
                 </div>
-                <div style="border: solid 1px gray; float: left;  padding: 2px;">
-                  <p style="text-align: center;">Map Operations</p>
-                  <hr/>
-                  <div id="operations">
-                    <a class="button" href="#" id="saveFileButton" onclick="saveMetaModel()">Save MetaModel</a>
-                    
+                  <div style="border: solid 1px gray; float: left;  padding: 2px;">
+                    <p style="text-align: center;">Load Meta Model</p>
+                    <hr/>
+                    <div id="selectMetaModel">
+
+                    </div>
+                  </div>
+                  <div style="border: solid 1px gray; float: left;  padding: 2px;">
+                    <p style="text-align: center;">Map Operations</p>
+                    <hr/>
+                    <div id="operations">
+                      <a class="button" href="#" id="saveFileButton" onclick="saveMetaModel()">Save MetaModel</a>
+                      <a class="button" href="#" id="saveFileButton" onclick="deleteMetaModels()">Clear MetaModels</a>
+                      
                   </div>
                   
                 </div>
@@ -63,6 +71,7 @@
         <script language="javascript">
           document.addEventListener('DOMContentLoaded', (event) => {
             loadMetaModels();
+            loadMetaConcepts();
           }); 
         </script>
     </body>

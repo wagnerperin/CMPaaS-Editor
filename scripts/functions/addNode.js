@@ -1,7 +1,7 @@
 
 const addNode = (e, obj) => {
     const diagram = e.diagram;
-    diagram.startTransaction("Add Concept");
+    diagram.startTransaction("Add Node");
 
     const fromNode = obj.part.adornedPart;
     const fromData = fromNode.data;
@@ -10,8 +10,8 @@ const addNode = (e, obj) => {
     loc.x += 120;
 
     const newNode = {
-        text: (fromNode.category === "concept" || fromNode.category === "map") ? 'New Relation' : 'New Concept',
-        category: (fromNode.category === "concept" || fromNode.category === "map") ? 'relation' : 'concept',
+        text: (fromNode.category === "concept" || fromNode.category === "map" || fromNode.category === "instance") ? 'New Relation' : 'New Concept',
+        category: (fromNode.category === "concept" || fromNode.category === "map" || fromNode.category === "instance") ? 'relation' : 'concept',
         loc: go.Point.stringify(loc)
     }
     diagram.model.addNodeData(newNode);
@@ -27,7 +27,7 @@ const addNode = (e, obj) => {
 
     diagram.select(diagram.findNodeForKey(genId));
 
-    diagram.commitTransaction("Add Concept");
+    diagram.commitTransaction("Add Node");
 
 };
 

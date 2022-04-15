@@ -1,4 +1,4 @@
-import { addNode } from "../../functions/main.js";
+import { addNode, addInstanceRelation } from "../../functions/main.js";
 const $ = go.GraphObject.make;
 
 const instanceNodeSelection = 
@@ -13,14 +13,14 @@ const instanceNodeSelection =
         ),
         $("Button",{
             alignment: go.Spot.TopRight,
-            click: addNode  // this function is defined below
+            click: addNode  
         },$(go.Shape, { 
             geometryString: "M0 0 L3 0 8 12 14 12 M12 10 L14 12 12 14", 
             stroke: "black"
         })),
         $("Button",{
             alignment: go.Spot.BottomRight,
-            click: addNode  // this function is defined below
+            click: addInstanceRelation
         },$(go.Shape, { 
             geometryString: "M0 0 L0 12 14 12 M12 10 L14 12 12 14", 
             stroke: "black"

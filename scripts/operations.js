@@ -90,3 +90,23 @@ const deleteMetaModels = () => {
     localStorage.removeItem('metaModels');
     document.location.reload(true);
 };
+
+const kanbanPerspective = () => {
+    document.getElementById('myDiagramDiv').style.display = 'none';
+    document.getElementById('myDiagramDiv2').style.display = 'block';
+}
+
+const mapPerspective = () => {
+    document.getElementById('myDiagramDiv').style.display = 'block';
+    document.getElementById('myDiagramDiv2').style.display = 'none';
+
+}
+
+const saveModel = () => {
+    localStorage.setItem('model', diagram.model.toJson());
+    document.location.reload(true);
+}
+
+const loadModel = () => {
+    diagram.model = go.Model.fromJson(JSON.parse(localStorage.getItem('model')));
+}

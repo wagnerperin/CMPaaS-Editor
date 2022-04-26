@@ -20,6 +20,10 @@ const validateLinks = (fromnode, _, tonode, __) => {
             if(validMetaConcepts.length > 0) return true;
             else return false
         }
+    }else if(fromnode.data.category === "concept"){
+        if(tonode.data.category === "relation"){
+            return true;
+        }
     }
 }
 export default validateLinks;

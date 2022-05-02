@@ -4,6 +4,7 @@ const test = (e) => {
     metaModels = metaModels.filter(mm => mm.name != e.srcElement.id);
     localStorage.setItem('metaModels', JSON.stringify(metaModels));
 }
+
 const loadMetaModels = () => {
     let div = document.getElementById('selectMetaModel');
     const metaModels = JSON.parse(localStorage.getItem('metaModels'));
@@ -16,6 +17,7 @@ const loadMetaModels = () => {
         div.appendChild(link);
     });
 }
+
 const loadMetaConcepts = () => {
     const metaModels = JSON.parse(localStorage.getItem('metaModels'));
     let knownConcepts = new Array();
@@ -75,30 +77,24 @@ const loadMetaConcepts = () => {
             });
     });
 }
-const saveMetaModel = () => {
-    const name = prompt("Nome do Modelo: ");
-    const metamodels = localStorage.getItem('metaModels') !== null ? JSON.parse(localStorage.getItem('metaModels')) : new Array();
-    metamodels.push({
-        name,
-        model: diagram.model.toJson()
+
+const getOutKanban = () =>{
+    diagram.model.nodeDataArray.forEach(node => {
+        node.visible = true;
+        if(node.kanbanCategory == "Developing Stage") node.isGroup = false;
     });
-    localStorage.setItem('metaModels', JSON.stringify(metamodels));
-    document.location.reload(true);
-};
 
-const deleteMetaModels = () => {
-    localStorage.removeItem('metaModels');
-    document.location.reload(true);
-};
-
-const kanbanPerspective = () => {
-    saveModel();
-    window.location.href = "kanban.html";
 }
 
 const saveModel = () => {
     localStorage.setItem('model', diagram.model.toJson());
     document.location.reload(true);
+}
+
+const mapPerspective = () => {
+    getOutKanban();
+    saveModel();
+    window.location.href = "index.html";
 }
 
 const loadModel = () => {

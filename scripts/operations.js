@@ -16,7 +16,15 @@ const loadMetaModels = () => {
         div.appendChild(link);
     });
 }
-const loadMetaConcepts = () => {
+const loadMetaConcepts2 = () => {
+    let viewpoints = document.getElementById('viewpoints');
+    let newLi = document.createElement('li');
+    newLi.setAttribute('class', 'header-title');
+    const node =  document.createTextNode('testeNode');
+    newLi.appendChild(node);
+
+    viewpoints.appendChild(newLi);
+
     const metaModels = JSON.parse(localStorage.getItem('metaModels'));
     let knownConcepts = new Array();
 
@@ -30,11 +38,20 @@ const loadMetaConcepts = () => {
     let select = document.getElementById('selectMetaModelConcept');
 
     knownConcepts.forEach(concept => {
+        let internalSpan = document.createElement('span');
+        internalSpan.classList.add('check');
+
+        let externalSpan = document.createElement('span');
+        externalSpan.classList.add('form-check-sign');
+
+        externalSpan.appendChild(internalSpan);
+
         let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = concept.metaModel + "::" + concept.text;
         checkbox.name = 'knownConcepts';
         checkbox.value = concept.metaModel + "::" + concept.key;
+        checkbox.classList.add('form-check-input')
 
         checkbox.onchange = (e) => {
             let selectedNode = diagram.selection.first();
@@ -53,14 +70,23 @@ const loadMetaConcepts = () => {
             else e.target.checked = false;
         }
 
-        select.appendChild(checkbox);
+        let lbl = document.createElement('label');
+        lbl.classList.add('form-check-label');
+        const textnode = document.createTextNode(concept.metaModel + "::" + concept.text);
+        lbl.appendChild(checkbox);
+        lbl.appendChild(textnode);
+        lbl.appendChild(externalSpan);
 
-        let label = document.createElement('label');
-        label.htmlFor = checkbox.id;
-        label.appendChild(document.createTextNode(checkbox.id));
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('form-check');
+        newDiv.appendChild(lbl);
 
-        select.appendChild(label);
-        select.appendChild(document.createElement("br"));
+        let a = document.createElement('a');
+        a.setAttribute('href', 'javascript:void(0)');
+        a.setAttribute('class', 'switch-trigger');
+
+        a.appendChild(newDiv);
+        select.appendChild(a);
         
     });
 
@@ -103,4 +129,64 @@ const saveModel = () => {
 
 const loadModel = () => {
     diagram.model = go.Model.fromJson(JSON.parse(localStorage.getItem('model')));
+}
+
+const loadMetaConcepts = (m, name) => {
+
+}
+
+const generateMMBox = (m) => {
+    const metaModels = JSON.parse(localStorage.getItem('metaModels'));
+    metaModels.forEach(mm => {
+        let span = document.createElement('span');
+        span.setAttribute('class', 'toggle');
+        let input = document.createElement('input');
+        input.setAttribute('type', 'checkbox');
+        input.setAttribute('id', mm.name.replace(/ /g, ''));
+        input.setAttribute('class', 'check');
+        let label = document.createElement('label');
+        label.appendChild(input);
+        label.appendChild(span);
+        let div = document.createElement('div');
+        div.setAttribute('class', 'togglebutton switch-sidebar-mini');
+        div.appendChild(label);
+        let label2 = document.createElement('label');
+        label2.setAttribute('class', 'ml-auto');
+        label2.appendChild(div);
+        let p = document.createElement('p');
+        let text = document.createTextNode(mm.name);
+        p.appendChild(text);
+        let a = document.createElement('a');
+        a.setAttribute('href', 'javascript:void(0)');
+        a.setAttribute('class', 'switch-trigger');
+        let div2 = document.createElement('div');
+        div2.setAttribute('class', 'clearfix');
+        a.appendChild(p);
+        a.appendChild(label2);
+        a.appendChild(div2);
+        let newLi = document.createElement('li');
+        newLi.setAttribute('class', 'adjustments-line');
+        newLi.appendChild(a);
+        m.appendChild(newLi);
+        loadMetaConcepts(m, mm.name);
+    });
+}
+
+const addHeader = (m, title) => {
+    const newLi = document.createElement('li');
+    newLi.setAttribute('class', 'header-title');
+    const node =  document.createTextNode(title);
+    newLi.appendChild(node);
+    tools.appendChild(newLi);
+}
+
+const addButton = (m, details) => {
+    
+}
+
+const mountMenu = () => {
+    const tools = document.getElementById('tools');
+    addHeader(tools, 'Meta-Models - Shared Concepts');
+
+    generateMMBox(tools);
 }

@@ -29,7 +29,7 @@ const loadMetaConcepts = () => {
             return (node.category === "concept" || node.category === "map");
         }).concat(knownConcepts);
     });
-    let select = document.getElementById('selectMetaModelConcept');
+    let select = document.getElementById('selectMetaConcepts');
 
     knownConcepts.forEach(concept => {
         let checkbox = document.createElement("input");

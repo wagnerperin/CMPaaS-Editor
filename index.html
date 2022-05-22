@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="lib/go.js"></script>
+        <script src="https://gojs.net/latest/release/go.js"></script>
         <script src="scripts/TextEditorSelectBox.js"></script>
         <style type="text/css">
             #myDiagramDiv {
@@ -40,29 +40,29 @@
             <div id="myDiagramDiv"></div>
 
             <div id="controls">
-                <div style="border: solid 1px gray; float: left;  padding: 2px;">
-                  <p style="text-align: center;">Known Shared Concepts</p>
+                <div style="border: solid 1px gray; float: left;  padding: 2px; width:100%">
+                  <p style="text-align: center;">Known Abstract Concepts</p>
                   <hr/>
-                  <div id="selectMetaModelConcept">
+                  <div id="selectMetaConcepts">
                   </div>
                   
                 </div>
-                  <div style="border: solid 1px gray; float: left;  padding: 2px;">
-                    <p style="text-align: center;">Load Meta Model</p>
+                  <div style="border: solid 1px gray; float: left;  padding: 2px; width:100%">
+                    <p style="text-align: center;">Load Abstract Model</p>
                     <hr/>
                     <div id="selectMetaModel">
 
                     </div>
                   </div>
-                  <div style="border: solid 1px gray; float: left;  padding: 2px;">
-                    <p style="text-align: center;">Map Operations</p>
+                  <div style="border: solid 1px gray; float: left;  padding: 2px; width:100%">
+                    <p style="text-align: center;">Operations</p>
                     <hr/>
                     <div id="operations">
-                      <a class="button" href="#" id="saveFileButton" onclick="saveModel()">Save Model</a>
-                      <a class="button" href="#" id="saveFileButton" onclick="loadModel()">Load Model</a>
-                      <a class="button" href="#" id="saveFileButton" onclick="saveMetaModel()">Save MetaModel</a>
-                      <a class="button" href="#" id="saveFileButton" onclick="deleteMetaModels()">Clear MetaModels</a>
-                      <a class="button" href="#" id="saveFileButton" onclick="kanbanPerspective()">KanBan Perspective</a>
+                      <a class="button" href="#" id="saveFileButton" style="width:90%;" onclick="saveModel()">Save Model Specification</a>
+                      <a class="button" href="#" id="saveFileButton" style="width:90%;" onclick="loadModel()">Load Model</a>
+                      <a class="button" href="#" id="saveFileButton" style="width:90%;" onclick="saveMetaModel()">Save Abstract Model</a>
+                      <a class="button" href="#" id="saveFileButton" style="width:90%;" onclick="deleteMetaModels()">Clear Abstract Models</a>
+                      <a class="button" href="#" id="saveFileButton" style="width:90%;" onclick="kanbanPerspective()">Go to KanBan Perspective</a>
                       
                   </div>
                   

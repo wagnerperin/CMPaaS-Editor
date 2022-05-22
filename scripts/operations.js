@@ -14,17 +14,10 @@ const loadMetaModels = () => {
         link.href='#';
         link.onclick = test;
         div.appendChild(link);
+        div.appendChild(document.createElement("br"));
     });
 }
-const loadMetaConcepts2 = () => {
-    let viewpoints = document.getElementById('viewpoints');
-    let newLi = document.createElement('li');
-    newLi.setAttribute('class', 'header-title');
-    const node =  document.createTextNode('testeNode');
-    newLi.appendChild(node);
-
-    viewpoints.appendChild(newLi);
-
+const loadMetaConcepts = () => {
     const metaModels = JSON.parse(localStorage.getItem('metaModels'));
     let knownConcepts = new Array();
 
@@ -35,7 +28,7 @@ const loadMetaConcepts2 = () => {
             return (node.category === "concept" || node.category === "map");
         }).concat(knownConcepts);
     });
-    let select = document.getElementById('selectMetaModelConcept');
+    let select = document.getElementById('selectMetaConcepts');
 
     knownConcepts.forEach(concept => {
         let internalSpan = document.createElement('span');
@@ -129,64 +122,4 @@ const saveModel = () => {
 
 const loadModel = () => {
     diagram.model = go.Model.fromJson(JSON.parse(localStorage.getItem('model')));
-}
-
-const loadMetaConcepts = (m, name) => {
-
-}
-
-const generateMMBox = (m) => {
-    const metaModels = JSON.parse(localStorage.getItem('metaModels'));
-    metaModels.forEach(mm => {
-        let span = document.createElement('span');
-        span.setAttribute('class', 'toggle');
-        let input = document.createElement('input');
-        input.setAttribute('type', 'checkbox');
-        input.setAttribute('id', mm.name.replace(/ /g, ''));
-        input.setAttribute('class', 'check');
-        let label = document.createElement('label');
-        label.appendChild(input);
-        label.appendChild(span);
-        let div = document.createElement('div');
-        div.setAttribute('class', 'togglebutton switch-sidebar-mini');
-        div.appendChild(label);
-        let label2 = document.createElement('label');
-        label2.setAttribute('class', 'ml-auto');
-        label2.appendChild(div);
-        let p = document.createElement('p');
-        let text = document.createTextNode(mm.name);
-        p.appendChild(text);
-        let a = document.createElement('a');
-        a.setAttribute('href', 'javascript:void(0)');
-        a.setAttribute('class', 'switch-trigger');
-        let div2 = document.createElement('div');
-        div2.setAttribute('class', 'clearfix');
-        a.appendChild(p);
-        a.appendChild(label2);
-        a.appendChild(div2);
-        let newLi = document.createElement('li');
-        newLi.setAttribute('class', 'adjustments-line');
-        newLi.appendChild(a);
-        m.appendChild(newLi);
-        loadMetaConcepts(m, mm.name);
-    });
-}
-
-const addHeader = (m, title) => {
-    const newLi = document.createElement('li');
-    newLi.setAttribute('class', 'header-title');
-    const node =  document.createTextNode(title);
-    newLi.appendChild(node);
-    tools.appendChild(newLi);
-}
-
-const addButton = (m, details) => {
-    
-}
-
-const mountMenu = () => {
-    const tools = document.getElementById('tools');
-    addHeader(tools, 'Meta-Models - Shared Concepts');
-
-    generateMMBox(tools);
 }

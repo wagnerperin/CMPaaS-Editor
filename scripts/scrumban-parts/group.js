@@ -62,6 +62,7 @@ const group =
 
                 //console.log(diagram.selection.first().data);
 
+                diagram.commitTransaction("Changing development stage");
 
             }
             }

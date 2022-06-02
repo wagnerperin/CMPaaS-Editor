@@ -32,11 +32,20 @@ const loadMetaConcepts = () => {
     let select = document.getElementById('selectMetaConcepts');
 
     knownConcepts.forEach(concept => {
+        let internalSpan = document.createElement('span');
+        internalSpan.classList.add('check');
+
+        let externalSpan = document.createElement('span');
+        externalSpan.classList.add('form-check-sign');
+
+        externalSpan.appendChild(internalSpan);
+
         let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = concept.metaModel + "::" + concept.text;
         checkbox.name = 'knownConcepts';
         checkbox.value = concept.metaModel + "::" + concept.key;
+        checkbox.classList.add('form-check-input')
 
         checkbox.onchange = (e) => {
             let selectedNode = diagram.selection.first();
@@ -55,14 +64,23 @@ const loadMetaConcepts = () => {
             else e.target.checked = false;
         }
 
-        select.appendChild(checkbox);
+        let lbl = document.createElement('label');
+        lbl.classList.add('form-check-label');
+        const textnode = document.createTextNode(concept.metaModel + "::" + concept.text);
+        lbl.appendChild(checkbox);
+        lbl.appendChild(textnode);
+        lbl.appendChild(externalSpan);
 
-        let label = document.createElement('label');
-        label.htmlFor = checkbox.id;
-        label.appendChild(document.createTextNode(checkbox.id));
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('form-check');
+        newDiv.appendChild(lbl);
 
-        select.appendChild(label);
-        select.appendChild(document.createElement("br"));
+        let a = document.createElement('a');
+        a.setAttribute('href', 'javascript:void(0)');
+        a.setAttribute('class', 'switch-trigger');
+
+        a.appendChild(newDiv);
+        select.appendChild(a);
         
     });
 

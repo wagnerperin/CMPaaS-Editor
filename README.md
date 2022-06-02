@@ -1,6 +1,7 @@
 # CMDD Framework Sample
 ## _The integrated perspective editor_
 [![Go|JavaScript](https://discoversdkcdn.azureedge.net/runtimecontent/companyfiles/5547/1711/thumbnail.png?v130981051425387404)](https://nodesource.com/products/nsolid)
+
 Instructions for running and testing the proposed framework implementation. We will cover:
 - Installation requirements and run instructions
 - Suggested test-script

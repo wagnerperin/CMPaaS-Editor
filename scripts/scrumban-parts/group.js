@@ -38,11 +38,31 @@ const group =
             const ok = grp.addMembers(grp.diagram.selection, true);
             if (!ok) grp.diagram.currentTool.doCancel();
             else{
+
+                diagram.startTransaction('Changing development stage');
+
+                let links = diagram.model.linkDataArray.filter(l => l.from == diagram.selection.first().data.key).map(l => l.to);
+                let node = diagram.model.nodeDataArray.find(n => (links.includes(n.key) && n.text=='KanBan Perspective::is in'));
+
+                let link = diagram.model.linkDataArray.find(l => l.from == node.key);
+
+                console.log(link);
+
+                diagram.model.setToKeyForLinkData(link, grp.data.key);
+
+                console.log(link);
+                
+                
                 //parei aqui
 
-                console.log(diagram.model.linkDataArray);
 
-                console.log(diagram.selection.first().data);
+                //console.log(diagram.model.nodeDataArray.filter(node => node.category == 'instanceRel'));
+
+                console.log(diagram.model.linkDataArray.filter(l=>l.from == diagram.selection.first().data.key));
+
+                //console.log(diagram.selection.first().data);
+
+
             }
             }
         },
@@ -58,7 +78,7 @@ const group =
         }
         },
         new go.Binding("visible", "visible"),
-        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        //new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
         new go.Binding("isSubGraphExpanded", "expanded").makeTwoWay(),
         // the lane header consisting of a TextBlock and an expander button
         $(go.Panel, "Horizontal",

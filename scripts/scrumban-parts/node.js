@@ -5,7 +5,7 @@ const node =
     $(go.Node, "Horizontal",{
             visible: false
         },
-        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        //new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
         new go.Binding("visible", "visible"),
         $(go.Shape, "Rectangle", {
         fill: '#009CCC', strokeWidth: 1, stroke: '#009CCC',

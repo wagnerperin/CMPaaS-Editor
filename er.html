@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://gojs.net/latest/release/go.js"></script>
+        <script src="scripts/TextEditorSelectBox.js"></script>
+        <style type="text/css">
+            #myDiagramDiv {
+              border: solid 1px black;
+              width: 1024px;
+              height: 600px;
+              margin-right: 12px;
+              float: left;
+              background-color: whitesmoke;
+            }
+        
+            #controls {
+              border: solid 1px gray;
+              width: 250px;
+              background: #ffffff;
+              padding: 5px;
+              float: left;
+            }
+            .button {
+              display: block;
+              width: 7em;
+              background-color: rgba(237, 197, 102, 0.867);
+              border-radius: 0.3em;
+              padding: 0.2em;
+              margin: 0.2em;
+              text-align: center;
+              cursor: pointer;
+              text-decoration: none;
+              color: black;
+            }
+          </style>
+    </head>
+
+    <body>
+        <div style="display: inline-block">
+            <div id="myDiagramDiv"></div>
+
+            <div id="controls">
+                <div style="border: solid 1px gray; float: left;  padding: 2px;">
+                  <p style="text-align: center;">Known Shared Concepts</p>
+                  <hr/>
+                  <div id="selectMetaConcepts">
+                  </div>
+                  
+                </div>
+                  <div style="border: solid 1px gray; float: left;  padding: 2px;">
+                    <p style="text-align: center;">Load Meta Model</p>
+                    <hr/>
+                    <div id="selectMetaModel">
+
+                    </div>
+                  </div>
+                  <div style="border: solid 1px gray; float: left;  padding: 2px;">
+                    <p style="text-align: center;">Map Operations</p>
+                    <hr/>
+                    <div id="operations">
+                      <a class="button" href="#" id="saveFileButton" onclick="saveModel()">Save Model</a>
+                      <a class="button" href="#" id="saveFileButton" onclick="loadModel()">Load Model</a>
+                      <a class="button" href="#" id="saveFileButton" onclick="saveMetaModel()">Save MetaModel</a>
+                      <a class="button" href="#" id="saveFileButton" onclick="deleteMetaModels()">Clear MetaModels</a>
+                      <a class="button" href="#" id="saveFileButton" onclick="mapPerspective()">Map Perspective</a>
+                      
+                  </div>
+                  
+                </div>
+              </div>
+        </div>
+        <script type="module" src="scripts/er-editor.js"></script>
+        <script src="scripts/er-operations.js"></script>
+        <script language="javascript">
+          document.addEventListener('DOMContentLoaded', (event) => {
+            loadMetaModels();
+            loadMetaConcepts();
+          }); 
+        </script>
+    </body>
+</html>

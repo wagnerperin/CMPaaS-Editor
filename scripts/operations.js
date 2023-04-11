@@ -115,6 +115,11 @@ const kanbanPerspective = () => {
     window.location.href = "kanban.html";
 }
 
+const ERPerspective = () => {
+    saveModel();
+    window.location.href = "er.html";
+}
+
 const saveModel = () => {
     localStorage.setItem('model', diagram.model.toJson());
     document.location.reload(true);
